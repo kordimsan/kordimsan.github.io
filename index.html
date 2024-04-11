@@ -20,24 +20,30 @@
 						<img src="ava.jpg" class="img-thumbnail mx-auto d-block rounded-circle" alt="...">
 					</div>
 					<div class="col-md-8">
-						<h1>Dmitry Korzunin</h1>
-						<h4>Python Developer</h4>
-						<h3>Details</h3>
-						Phone: <a href="tel:+79024429799" target="_blank" rel="noopener noreferrer">+79024429799</a><br>
-						Telegram: <a href="https://t.me/dmitry_korzunin" target="_blank"
-								rel="noopener noreferrer">@dmitry_korzunin</a><br>
-						E-mail: <a href="mailto:k79024429799@gmail.com">k79024429799@gmail.com</a>
+						<button id="language-switch">Switch Language</button>
+						<h1 id="title">Dmitry Korzunin</h1>
+						<h4 id="description">Python Developer</h4>
+						<h3 id="details">Details</h3>
+						<dl class="row">
+							<dt id="phone" class="col-sm-3">Phone</dt>
+							<dd class="col-sm-9"><a href="tel:+79024429799" target="_blank" rel="noopener noreferrer">+79024429799</a></dd>
+							<dt id="telegram" class="col-sm-3">Telegram</dt>
+							<dd class="col-sm-9"><a href="https://t.me/dmitry_korzunin" target="_blank"
+								rel="noopener noreferrer">@dmitry_korzunin</a></dd>
+							<dt id="email" class="col-sm-3">E-mail</dt>
+							<dd class="col-sm-9"><a href="mailto:k79024429799@gmail.com">k79024429799@gmail.com</a></dd>
+						</dl>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<h3>Profile:</h3>
-						<p>With extensive experience in developing web applications using Python, FastAPI, Django, React, and databases, I am a highly skilled software engineer. I have a deep understanding of financial services and cryptocurrency markets, and have applied my technical abilities to deliver innovative solutions for clients. My proficiency enables me to build high-performance and scalable applications. I am excited to bring my technical expertise, financial services and cryptocurrency knowledge to contribute to a company's success.</p>
+						<h3 id="profile">Profile:</h3>
+						<p id="profile_text">With extensive experience in developing web applications using Python, FastAPI, Django, React, and databases, I am a highly skilled software engineer. I have a deep understanding of financial services and cryptocurrency markets, and have applied my technical abilities to deliver innovative solutions for clients. My proficiency enables me to build high-performance and scalable applications. I am excited to bring my technical expertise, financial services and cryptocurrency knowledge to contribute to a company's success.</p>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<h3>Websites & Social Links</h3>
+						<h3 id="web">Websites & Social Links</h3>
 						<p>
 							<a href="https://github.com/kordimsan" target="_blank" rel="noopener noreferrer"><img alt="GitHub"
 									src="mark-github.svg" height="30px"></a>
@@ -49,7 +55,7 @@
 					</div>
 				</div>
 				<div class="list-group">
-					<h3>Employment History:</h3>
+					<h3 id="employment_history">Employment History:</h3>
 					<a href="https://www.elastoo.com/" target="_blank" rel="noopener noreferrer"
 						class="list-group-item list-group-item-action flex-column align-items-start">
 						<div class="d-flex w-100 justify-content-between">
@@ -345,7 +351,7 @@
 			</div>
 			<div class="col-md-4 bg-dark text-white rounded-right">
 				<div class="mt-4 mb-4">
-					<h1 class="mt-4">Skills</h1>
+					<h1 id="skills" class="mt-4">Skills</h1>
 					Python, Poetry, Pip<div class="progress">
 						<div class="progress-bar w-75">Experienced</div>
 					</div>
@@ -398,4 +404,54 @@
 	<script src="index.js" type="text/javascript"></script>
 </body>
 
+<script>
+	const content = {
+		en: {
+			title: "Dmitry Korzunin",
+			description: "Python developer with expertise in finance.",
+			switchText: "RU",
+			details: "Details",
+			phone: "Phone",
+			telegram: "Telegram",
+			email: "E-mail",
+			skills: "Skills",
+			profile: "Profile",
+			profile_text: "With extensive experience in developing web applications using Python, FastAPI, Django, React, and databases, I am a highly skilled software engineer. I have a deep understanding of financial services and cryptocurrency markets, and have applied my technical abilities to deliver innovative solutions for clients. My proficiency enables me to build high-performance and scalable applications. I am excited to bring my technical expertise, financial services and cryptocurrency knowledge to contribute to a company's success.",
+			web: "Websites & Social Links",
+			employment_history: "Employment History"
+		},
+		ru: {
+			title: "Дмитрий Корзунин",
+			description: "Python программист с финансовыми знаниями.",
+			switchText: "EN",
+			details: "Контакты",
+			phone: "Телефон",
+			telegram: "Telegram",
+			email: "Почта",
+			skills: "Навыки",
+			profile: "Профиль",
+			profile_text: "С большим опытом разработки веб-приложений с использованием Python, FastAPI, Django, React и баз данных, я - высококвалифицированный инженер-программист. Я имею глубокое понимание финансовых услуг и рынков криптовалюты и применял свои технические способности для разработки инновационных решений для клиентов. Моя квалификация позволяет мне создавать высокопроизводительные и масштабируемые приложения. Я рад внести свой вклад в успех компании, применяя свои технические знания, финансовые услуги и знания о криптовалюте.",
+			web: "Социальные сети",
+			employment_history: "Опыт работы"
+		},
+	};
+
+	let currentLanguage = 'en';
+	const switchButton = document.getElementById('language-switch');
+	
+	function updateContent() {
+		Object.keys(content[currentLanguage]).map(item => {
+			const Element = document.getElementById(item);
+			if (Element)
+				Element.textContent = content[currentLanguage][item];
+		})
+	}
+
+	switchButton.addEventListener('click', () => {
+		currentLanguage = currentLanguage === 'en' ? 'ru' : 'en';
+		updateContent();
+	});
+
+	updateContent();
+</script>
 </html>
